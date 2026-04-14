@@ -1,4 +1,4 @@
-<Project Sdk="Aspire.AppHost.Sdk/13.0.0">
+<Project Sdk="Aspire.AppHost.Sdk/13.2.2">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -7,6 +7,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Nimble.Modulith.ServiceDefaults\Nimble.Modulith.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\_Host\Nimble.Modulith.Web\Nimble.Modulith.Web.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Aspire.Hosting.SqlServer" />
     </ItemGroup>
 
 </Project>
