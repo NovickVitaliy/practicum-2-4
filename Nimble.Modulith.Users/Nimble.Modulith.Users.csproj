@@ -1,0 +1,5 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Nimble.Modulith.Users.Contracts\Nimble.Modulith.Users.Contracts.csproj" />
+  </ItemGroup>
+</Project>
