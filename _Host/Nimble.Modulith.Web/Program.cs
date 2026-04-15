@@ -5,6 +5,7 @@ using Nimble.Modulith.Users;
 using Nimble.Modulith.Products;
 using Nimble.Modulith.Customers;
 using Nimble.Modulith.Email;
+using Nimble.Modulith.Web;
 using Serilog;
 
 var logger = Log.Logger = new LoggerConfiguration()
@@ -24,6 +25,10 @@ builder.AddServiceDefaults();
 builder.Services.AddMediator(options =>
 {
     options.ServiceLifetime = ServiceLifetime.Scoped;
+    options.PipelineBehaviors =
+    [
+        typeof(LoggingBehavior<,>)
+    ];
 });
 
 // Add FastEndpoints with JWT Bearer Authentication and Authorization

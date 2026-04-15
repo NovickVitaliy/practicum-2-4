@@ -11,7 +11,5 @@ public record CreateOrderCommand(
 
 public record CreateOrderItemDto(
     int ProductId,
-    string ProductName,
-    int Quantity,
-    decimal UnitPrice
-);
+    int Quantity
+);  // UnitPrice and ProductName removed - will be fetched from Products module
