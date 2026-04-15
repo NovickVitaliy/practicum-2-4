@@ -16,6 +16,7 @@ public class ListByDate(IMediator mediator) : EndpointWithoutRequest<List<OrderR
             s.Description = "Returns all orders created on the specified date";
         });
         Tags("orders");
+        Roles("Admin");
     }
 
     public override async Task HandleAsync(CancellationToken ct)

@@ -4,6 +4,7 @@ using FastEndpoints.Swagger;
 using Nimble.Modulith.Users;
 using Nimble.Modulith.Products;
 using Nimble.Modulith.Customers;
+using Nimble.Modulith.Email;
 using Serilog;
 
 var logger = Log.Logger = new LoggerConfiguration()
@@ -44,6 +45,7 @@ builder.Services.SwaggerDocument(o =>
 builder.AddUsersModuleServices(logger);
 builder.AddProductsModuleServices(logger);
 builder.AddCustomersModuleServices(logger);
+builder.AddEmailModuleServices(logger);
 
 var app = builder.Build();
 

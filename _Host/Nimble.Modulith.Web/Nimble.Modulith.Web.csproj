@@ -14,6 +14,7 @@
     
     <ItemGroup>
       <ProjectReference Include="..\..\Customers Module\Nimble.Modulith.Customers\Nimble.Modulith.Customers.csproj" />
+      <ProjectReference Include="..\..\Nimble.Modulith.Email\Nimble.Modulith.Email.csproj" />
       <ProjectReference Include="..\..\Nimble.Modulith.ServiceDefaults\Nimble.Modulith.ServiceDefaults.csproj" />
       <ProjectReference Include="..\..\Nimble.Modulith.Users\Nimble.Modulith.Users.csproj" />
       <ProjectReference Include="..\..\Products Module\Nimble.Modulith.Products\Nimble.Modulith.Products.csproj" />

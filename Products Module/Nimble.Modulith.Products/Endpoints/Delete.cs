@@ -16,6 +16,7 @@ public class Delete(ProductsDbContext dbContext) : Endpoint<DeleteProductRequest
     public override void Configure()
     {
         Delete("/products/{id}");
+        Roles("Admin");
         Tags("products");
         Summary(s =>
         {
