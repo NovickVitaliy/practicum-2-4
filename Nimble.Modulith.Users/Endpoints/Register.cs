@@ -28,6 +28,7 @@ public class Register(UserManager<IdentityUser> userManager) :
     public override void Configure()
     {
         Post("/register-user");
+        Tags("Account");
         AllowAnonymous();
         Summary(s => {
             s.Summary = "Register a new user";

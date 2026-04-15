@@ -10,6 +10,7 @@ public class Profile(SignInManager<IdentityUser> signInManager) : EndpointWithou
     public override void Configure()
     {
         Post("/profile");
+        Tags("Account");
         AllowAnonymous(); // For now, we'll require auth later when we implement JWT properly
         Summary(s => {
             s.Summary = "Profile the current user";

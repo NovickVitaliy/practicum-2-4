@@ -1,6 +1,7 @@
 using FastEndpoints;
 using FastEndpoints.Security;
 using FastEndpoints.Swagger;
+using Nimble.Modulith.Products;
 using Nimble.Modulith.Users;
 using Serilog;
 
@@ -17,6 +18,7 @@ builder.Host.UseSerilog((_, config) => config.ReadFrom.Configuration(builder.Con
 builder.AddServiceDefaults();
 
 builder.AddUsersModuleServices(logger);
+builder.AddProductsModuleServices(logger);
 
 builder.Services.AddFastEndpoints()
     .AddAuthenticationJwtBearer(s =>
@@ -29,6 +31,7 @@ builder.Services.AddFastEndpoints()
 var app = builder.Build();
 
 await app.EnsureUsersModuleDatabaseAsync();
+await app.EnsureProductsModuleDatabaseAsync();
 
 app.UseAuthentication();
 app.UseAuthorization();

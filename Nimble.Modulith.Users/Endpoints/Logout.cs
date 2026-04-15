@@ -16,6 +16,7 @@ public class Logout(SignInManager<IdentityUser> signInManager) : EndpointWithout
     public override void Configure()
     {
         Post("/logout-user");
+        Tags("Account");
         AllowAnonymous(); // For now, we'll require auth later when we implement JWT properly
         Summary(s => {
             s.Summary = "Logout the current user";

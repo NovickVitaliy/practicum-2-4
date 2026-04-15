@@ -28,6 +28,7 @@ public class Login(SignInManager<IdentityUser> signInManager) :
     public override void Configure()
     {
         Post("/login-user");
+        Tags("Account");
         AllowAnonymous();
         Summary(s => {
             s.Summary = "Login with email and password";
