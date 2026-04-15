@@ -1,4 +1,8 @@
 <Solution>
+  <Folder Name="/Customers Module/">
+    <Project Path="Customers Module/Nimble.Modulith.Customers.Contracts/Nimble.Modulith.Customers.Contracts.csproj" />
+    <Project Path="Customers Module/Nimble.Modulith.Customers/Nimble.Modulith.Customers.csproj" />
+  </Folder>
   <Folder Name="/Products Module/">
     <Project Path="Products Module/Nimble.Modulith.Products.Contracts/Nimble.Modulith.Products.Contracts.csproj" />
     <Project Path="Products Module/Nimble.Modulith.Products/Nimble.Modulith.Products.csproj" />
