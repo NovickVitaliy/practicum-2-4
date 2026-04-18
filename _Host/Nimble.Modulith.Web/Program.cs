@@ -76,5 +76,6 @@ app.MapDefaultEndpoints();
 await app.EnsureUsersModuleDatabaseAsync();
 await app.EnsureProductsModuleDatabaseAsync();
 await app.EnsureCustomersModuleDatabaseAsync();
+await app.EnsureReportingModuleDatabaseAsync();
 
 app.Run();

@@ -14,6 +14,8 @@ public class ReportingDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasDefaultSchema("Reporting");
+        
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ReportingDbContext).Assembly);
         base.OnModelCreating(modelBuilder);
     }

@@ -34,7 +34,7 @@ public class AddRoleToUser : Endpoint<AddRoleToUserRequest, AddRoleToUserRespons
     public override void Configure()
     {
         Post("/users/{id}/roles");
-        Roles("Admin");
+        // Roles("Admin");
     }
 
     public override async Task HandleAsync(AddRoleToUserRequest req, CancellationToken ct)

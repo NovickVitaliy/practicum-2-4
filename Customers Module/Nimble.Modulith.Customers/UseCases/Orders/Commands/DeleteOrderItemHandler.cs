@@ -1,33 +1,32 @@
 using Ardalis.Result;
+using Ardalis.Specification;
 using Mediator;
 using Nimble.Modulith.Customers.Domain.Interfaces;
 using Nimble.Modulith.Customers.Domain.OrderAggregate;
 
 namespace Nimble.Modulith.Customers.UseCases.Orders.Commands;
 
-public class DeleteOrderItemHandler(IRepository<Order> repository) 
+public class DeleteOrderItemHandler(
+    IRepository<Order> repository)
     : ICommandHandler<DeleteOrderItemCommand, Result<OrderDto>>
 {
     public async ValueTask<Result<OrderDto>> Handle(DeleteOrderItemCommand command, CancellationToken ct)
     {
-        var order = await repository.GetByIdAsync(command.OrderId, ct);
+        var order = await repository.FirstOrDefaultAsync(
+            new OrderByIdWithItemsSpec(command.OrderId), ct);
 
         if (order is null)
-        {
             return Result<OrderDto>.NotFound("Order not found");
-        }
 
-        var item = order.Items.FirstOrDefault(i => i.Id == command.OrderItemId);
+        var item = order.Items.FirstOrDefault(x => x.Id == command.OrderItemId);
+
         if (item is null)
-        {
             return Result<OrderDto>.NotFound("Order item not found");
-        }
 
         order.RemoveItem(item);
         order.UpdatedAt = DateTime.UtcNow;
 
         await repository.UpdateAsync(order, ct);
-        await repository.SaveChangesAsync(ct);
 
         var dto = new OrderDto(
             order.Id,
@@ -49,5 +48,14 @@ public class DeleteOrderItemHandler(IRepository<Order> repository)
         );
 
         return Result<OrderDto>.Success(dto);
+    }
+}
+public class OrderByIdWithItemsSpec : Specification<Order>
+{
+    public OrderByIdWithItemsSpec(int orderId)
+    {
+        Query
+            .Where(x => x.Id == orderId)
+            .Include(x => x.Items);
     }
 }
